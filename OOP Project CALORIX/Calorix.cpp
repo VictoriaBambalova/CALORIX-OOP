@@ -626,11 +626,12 @@ void Calorix::handleAddExercise(std::istringstream& input) {
     std::string name;
     double caloriesBurnedPerHour;
     std::string muscleGroupStr;
+    int defaultDurationMinutes;
 
-    input >> name >> caloriesBurnedPerHour >> muscleGroupStr;
+    input >> name >> caloriesBurnedPerHour >> muscleGroupStr >> defaultDurationMinutes;
 
-    if (!input) {
-        std::cout << "Usage: add-exercise <name> <calories_burned_per_hour> <muscle-group>\n";
+    if (!input || defaultDurationMinutes <= 0) {
+        std::cout << "Usage: add-exercise <name> <calories_burned_per_hour> <muscle-group> <default_duration_minutes>\n";
         return;
     }
 
@@ -644,7 +645,7 @@ void Calorix::handleAddExercise(std::istringstream& input) {
         name,
         caloriesBurnedPerHour,
         stringToMuscleGroup(muscleGroupStr),
-        15
+        defaultDurationMinutes
     ));
 
     std::cout << "Exercise added successfully.\n";

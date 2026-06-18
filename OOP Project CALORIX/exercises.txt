@@ -1,1 +1,2 @@
 1;running;600;CARDIO;15
+2;swimming;500;CARDIO;30

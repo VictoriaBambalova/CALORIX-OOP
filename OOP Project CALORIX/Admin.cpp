@@ -27,7 +27,7 @@ void Admin::printHelp() const {
     std::cout << "list-exercises\n";
     std::cout << "block-user <username>\n";
     std::cout << "add-food <name> <calories_per_100g> <protein_per_100g> <carbs_per_100g> <fat_per_100g>\n";
-    std::cout << "add-exercise <name> <calories_burned_per_hour> <muscle-group>\n";
+    std::cout << "add-exercise <name> <calories_burned_per_hour> <muscle-group> <default_duration_minutes>\n";
     std::cout << "update-food <food-name> <new-calories>\n";
     std::cout << "end\n";
 }
