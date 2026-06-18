@@ -371,30 +371,55 @@ void Calorix::handleViewProgress() {
         return;
     }
 
-    const FitnessGoal& goal = trainee->getGoal();
+    FitnessGoal& goal = trainee->getGoal();
 
     if (!goal.hasGoal()) {
         std::cout << "No goal has been set.\n";
         return;
     }
 
+    double currentWeight = trainee->getProfile().getWeight();
+    double difference = goal.getTargetValue() - currentWeight;
+    const double tolerance = 0.1;
+
+    if (goal.getGoalType() == GoalType::WEIGHT_LOSS ||
+        goal.getGoalType() == GoalType::BULKING ||
+        goal.getGoalType() == GoalType::MAINTENANCE) {
+        if (difference >= -tolerance && difference <= tolerance) {
+            goal.setAchieved(true);
+        }
+        else {
+            goal.setAchieved(false);
+        }
+    }
+
     goal.print();
 
     if (goal.getGoalType() == GoalType::WEIGHT_LOSS ||
         goal.getGoalType() == GoalType::BULKING) {
-        double currentWeight = trainee->getProfile().getWeight();
-        double difference = goal.getTargetValue() - currentWeight;
-
         std::cout << "Current weight: " << currentWeight << " kg\n";
 
-        if (difference > 0) {
+        if (difference > tolerance) {
             std::cout << "You need to gain " << difference << " kg to reach your target.\n";
         }
-        else if (difference < 0) {
+        else if (difference < -tolerance) {
             std::cout << "You need to lose " << -difference << " kg to reach your target.\n";
         }
         else {
             std::cout << "You have reached your target weight.\n";
+        }
+    }
+    else if (goal.getGoalType() == GoalType::MAINTENANCE) {
+        std::cout << "Current weight: " << currentWeight << " kg\n";
+
+        if (difference > tolerance) {
+            std::cout << "You are below your maintenance target by " << difference << " kg.\n";
+        }
+        else if (difference < -tolerance) {
+            std::cout << "You are above your maintenance target by " << -difference << " kg.\n";
+        }
+        else {
+            std::cout << "You are maintaining your target weight.\n";
         }
     }
 }

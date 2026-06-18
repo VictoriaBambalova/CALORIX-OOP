@@ -1,2 +1,18 @@
-﻿  Enums.cpp
-  OOP Project CALORIX.vcxproj -> C:\Users\vikto\OneDrive\Desktop\OOP Project CALORIX\x64\Debug\OOP Project CALORIX.exe
+﻿  Admin.cpp
+  Calorix.cpp
+  Date.cpp
+  Enums.cpp
+  Exercise.cpp
+  ExerciseEntry.cpp
+  FitnessGoal.cpp
+  Food.cpp
+  FoodEntry.cpp
+  OOP Project CALORIX.cpp
+  Trainee.cpp
+  User.cpp
+  UserProfile.cpp
+  WorkoutPlan.cpp
+  WorkoutPlanner.cpp
+  Generating Code...
+  LINK : C:\Users\vikto\OneDrive\Desktop\CALORIX-OOP\x64\Debug\OOP Project CALORIX.exe not found or not built by the last incremental link; performing full link
+  OOP Project CALORIX.vcxproj -> C:\Users\vikto\OneDrive\Desktop\CALORIX-OOP\x64\Debug\OOP Project CALORIX.exe
