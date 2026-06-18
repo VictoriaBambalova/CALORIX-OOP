@@ -1,0 +1,16 @@
+.vs/
+Debug/
+x64/
+
+*.user
+*.suo
+*.obj
+*.exe
+*.ilk
+*.pdb
+*.log
+*.tlog
+*.lastbuildstate
+
+[Bb]in/
+[Oo]bj/
