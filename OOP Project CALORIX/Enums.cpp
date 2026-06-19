@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <cctype>
 
+//to upper
 static std::string normalizeEnumString(std::string str) {
     std::transform(str.begin(), str.end(), str.begin(),
         [](unsigned char ch) {
