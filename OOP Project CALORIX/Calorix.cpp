@@ -221,11 +221,28 @@ void Calorix::handleSetGoals(std::istringstream& input) {
         return;
     }
 
+    GoalType goalType = stringToGoalType(goalTypeStr);
+
+    if (goalType == GoalType::NONE) {
+        std::cout << "Invalid goal type. Use WEIGHT_LOSS, BULKING or MAINTENANCE.\n";
+        return;
+    }
+
+    Date deadline = Date::fromString(deadlineStr);
+    Date today = Date::today();
+
+    if (deadline.getYear() < today.getYear() ||
+        (deadline.getYear() == today.getYear() && deadline.getMonth() < today.getMonth()) ||
+        (deadline.getYear() == today.getYear() && deadline.getMonth() == today.getMonth() && deadline.getDay() < today.getDay())) {
+        std::cout << "Invalid deadline. Deadline cannot be in the past.\n";
+        return;
+    }
+
     FitnessGoal goal(
-        stringToGoalType(goalTypeStr),
+        goalType,
         targetValue,
-        Date::today(),
-        Date::fromString(deadlineStr),
+        today,
+        deadline,
         false
     );
 
